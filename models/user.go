@@ -11,13 +11,15 @@ var (
 	nextID = 1
 )
 
+//GetUser prendre utilisateur
 func GetUser() []*User {
 	return users
 }
 
-func AddUser(u User) ( u  User, error ){
+//AddUser ajouter utilisateur
+func AddUser(u User) (User, error) {
 	u.ID = nextID
-	nextID++;
+	nextID++
 	users = append(users, &u)
 	return u, nil
 }

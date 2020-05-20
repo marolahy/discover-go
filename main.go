@@ -1,9 +1,10 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+	"net/http"
 
+	"github.com/marolahy/discover-go/controllers"
 	"github.com/marolahy/discover-go/models"
 )
 
@@ -14,10 +15,14 @@ func main() {
 		LastName:  "RAND",
 	}
 	fmt.Println(u)
+	startWebserver(3000)
 }
 
 func startWebserver(port int) error {
 	fmt.Println("Start webserver")
 
-	return errors.New("Somithing went wrong")
+	controllers.RegisterController()
+	http.ListenAndServe(fmt.Sprint(":", port), nil)
+
+	return nil
 }
